@@ -1,1 +1,440 @@
-guebul-preview.html
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="당신의 특별한 소망을 담아줄 100% 핸드메이드 한국 전통 괴불 노리개" />
+  <meta name="theme-color" content="#9f1d2c" />
+  <meta property="og:title" content="소망수호 | 핸드메이드 괴불 노리개" />
+  <meta property="og:description" content="한 땀 한 땀 평안을 기원하며 만든, 일상 속 작은 수호신" />
+  <meta property="og:image" content="assets/hero-products.jpg" />
+  <title>소망수호 | 핸드메이드 괴불 노리개</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
+
+    :root {
+      --red: #9f1d2c;
+      --red-dark: #70151f;
+      --gold: #c49a46;
+      --ink: #29221d;
+      --cream: #fbf7ef;
+      --paper: #f4ede0;
+      --white: #fffdf9;
+      --muted: #6f665e;
+      --line: rgba(122, 87, 54, .16);
+      --shadow: 0 24px 70px rgba(69, 35, 20, .14);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: "Noto Sans KR", sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      opacity: .18;
+      pointer-events: none;
+      z-index: 20;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+    }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
+    .serif { font-family: "Gowun Batang", serif; }
+
+    .notice {
+      padding: 8px 20px;
+      text-align: center;
+      color: #fff8e9;
+      background: var(--red-dark);
+      font-size: 13px;
+      letter-spacing: .06em;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(251, 247, 239, .88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav { height: 74px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .08em; }
+    .brand-mark {
+      width: 36px; height: 36px; display: grid; place-items: center;
+      color: var(--cream); background: var(--red); border-radius: 50% 50% 46% 54%;
+      font-family: "Gowun Batang", serif; font-size: 12px;
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.25), 0 4px 12px rgba(159,29,44,.2);
+    }
+    .nav-links { display: flex; align-items: center; gap: 30px; color: #544a42; font-size: 14px; }
+    .nav-links a:hover { color: var(--red); }
+    .nav-buy, .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      color: #fff; background: var(--red); border-radius: 999px;
+      padding: 12px 21px; font-weight: 700; transition: .25s ease;
+      box-shadow: 0 9px 22px rgba(159,29,44,.2);
+    }
+    .nav-buy:hover, .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); }
+
+    .hero { position: relative; min-height: 720px; display: flex; align-items: center; padding: 72px 0 92px; overflow: hidden; }
+    .hero::before {
+      content: ""; position: absolute; width: 760px; height: 760px; border: 1px solid rgba(196,154,70,.28);
+      border-radius: 50%; right: -220px; top: -150px;
+    }
+    .hero::after {
+      content: "福"; position: absolute; left: -32px; bottom: -118px; color: rgba(159,29,44,.035);
+      font: 700 360px/1 serif; pointer-events: none;
+    }
+    .hero-grid { position: relative; display: grid; grid-template-columns: .92fr 1.08fr; align-items: center; gap: 72px; z-index: 1; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; color: var(--red); font-size: 13px; font-weight: 700; letter-spacing: .18em; }
+    .eyebrow::before { content: ""; width: 34px; height: 1px; background: var(--gold); }
+    h1 { margin: 22px 0 25px; font: 700 clamp(42px, 5.2vw, 72px)/1.25 "Gowun Batang", serif; letter-spacing: -.045em; }
+    h1 em { color: var(--red); font-style: normal; position: relative; white-space: nowrap; }
+    h1 em::after { content: ""; position: absolute; height: 9px; left: 0; right: 0; bottom: 5px; background: rgba(196,154,70,.3); z-index: -1; }
+    .hero-copy { max-width: 580px; color: var(--muted); font-size: 18px; word-break: keep-all; }
+    .hero-actions { display: flex; align-items: center; gap: 17px; margin-top: 36px; }
+    .btn-primary { min-height: 55px; padding-inline: 27px; }
+    .btn-secondary { color: #51463e; padding: 12px 4px; border-bottom: 1px solid #8a7869; font-weight: 600; }
+    .trust { display: flex; gap: 24px; margin-top: 46px; padding-top: 25px; border-top: 1px solid var(--line); }
+    .trust span { display: flex; align-items: center; gap: 8px; color: #685c53; font-size: 13px; }
+    .trust i { width: 7px; height: 7px; background: var(--gold); border-radius: 50%; }
+
+    .hero-visual { position: relative; min-height: 580px; }
+    .photo-frame {
+      position: absolute; inset: 0 5% 0 10%; overflow: hidden; border-radius: 48% 48% 30px 30px;
+      box-shadow: var(--shadow); background: #ded6c8;
+    }
+    .photo-frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(69,39,21,.04), rgba(45,20,10,.18)); }
+    .photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; transform: scale(1.015); }
+    .seal {
+      position: absolute; right: 0; top: 46px; z-index: 2; width: 106px; height: 106px; border-radius: 50%;
+      display: grid; place-items: center; text-align: center; color: #fff9e9; background: var(--red);
+      border: 3px double rgba(255,240,188,.7); transform: rotate(8deg); font: 700 17px/1.45 "Gowun Batang", serif;
+      box-shadow: 0 13px 30px rgba(112,21,31,.26);
+    }
+    .image-note {
+      position: absolute; left: 0; bottom: 37px; z-index: 2; padding: 17px 21px; border-left: 3px solid var(--gold);
+      background: rgba(255,253,249,.94); box-shadow: 0 14px 32px rgba(42,23,13,.14); font: 700 16px/1.5 "Gowun Batang", serif;
+    }
+
+    section { padding: 115px 0; }
+    .section-head { text-align: center; max-width: 720px; margin: 0 auto 58px; }
+    .section-head small { color: var(--red); font-weight: 700; letter-spacing: .18em; }
+    .section-head h2 { margin: 14px 0 16px; font: 700 clamp(32px, 4vw, 48px)/1.35 "Gowun Batang", serif; letter-spacing: -.03em; }
+    .section-head p { color: var(--muted); word-break: keep-all; }
+
+    .story { background: var(--white); border-block: 1px solid var(--line); }
+    .story-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: 75px; align-items: center; }
+    .symbol { position: relative; aspect-ratio: 1/1; display: grid; place-items: center; }
+    .symbol::before, .symbol::after { content: ""; position: absolute; border-radius: 50%; }
+    .symbol::before { inset: 3%; border: 1px solid rgba(196,154,70,.4); }
+    .symbol::after { inset: 17%; background: #f5ebdb; }
+    .triangle { position: relative; z-index: 1; width: 55%; aspect-ratio: 1; background: var(--red); clip-path: polygon(50% 0, 100% 92%, 0 92%); display: grid; place-items: center; padding-top: 27%; color: #fbe7b1; font: 700 34px "Gowun Batang", serif; filter: drop-shadow(0 16px 18px rgba(100,30,27,.18)); }
+    .story-copy h2 { font: 700 clamp(34px, 4vw, 49px)/1.4 "Gowun Batang", serif; margin: 0 0 24px; }
+    .story-copy p { color: var(--muted); margin: 0 0 18px; word-break: keep-all; }
+    .definition { margin-top: 32px; padding: 22px 26px; border: 1px solid rgba(196,154,70,.38); background: #fcf8f0; }
+    .definition b { color: var(--red); margin-right: 12px; font-family: "Gowun Batang", serif; font-size: 19px; }
+
+    .features { position: relative; }
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .feature-card { position: relative; min-height: 300px; padding: 39px 34px; background: var(--white); border: 1px solid var(--line); border-radius: 4px 28px 4px 28px; overflow: hidden; transition: .3s; }
+    .feature-card:hover { transform: translateY(-7px); box-shadow: 0 20px 50px rgba(65,35,18,.1); border-color: rgba(196,154,70,.45); }
+    .feature-card::after { content: attr(data-num); position: absolute; right: 15px; bottom: -27px; color: rgba(159,29,44,.055); font: 700 110px serif; }
+    .feature-icon { width: 50px; height: 50px; display: grid; place-items: center; border: 1px solid rgba(196,154,70,.5); border-radius: 50%; color: var(--red); font-size: 22px; }
+    .feature-card h3 { margin: 24px 0 12px; font: 700 23px "Gowun Batang", serif; }
+    .feature-card p { color: var(--muted); margin: 0; font-size: 15px; word-break: keep-all; }
+
+    .gallery { padding-top: 20px; }
+    .gallery-grid { display: grid; grid-template-columns: 1.12fr .88fr; grid-template-rows: repeat(2, 285px); gap: 18px; }
+    .gallery-item { position: relative; overflow: hidden; background: #e8dfd1; border-radius: 4px 30px 4px 30px; box-shadow: 0 16px 45px rgba(67,38,23,.1); }
+    .gallery-item:first-child { grid-row: 1 / 3; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+    .gallery-item:first-child img { object-position: center; }
+    .gallery-item:nth-child(2) img { object-position: center; }
+    .gallery-item:nth-child(3) img { object-position: center 45%; }
+    .gallery-item:hover img { transform: scale(1.035); }
+    .gallery-caption { position: absolute; left: 18px; right: 18px; bottom: 18px; padding: 15px 17px; color: #fff; background: rgba(41,34,29,.76); backdrop-filter: blur(8px); border-left: 2px solid #e7bd68; }
+    .gallery-caption strong { display: block; font: 700 17px "Gowun Batang", serif; }
+    .gallery-caption span { font-size: 12px; color: rgba(255,255,255,.72); }
+
+    .uses { padding-top: 0; }
+    .use-panel { background: var(--red-dark); color: #fff9ef; padding: 72px; border-radius: 4px 54px 4px 54px; position: relative; overflow: hidden; }
+    .use-panel::before { content: ""; position: absolute; width: 420px; height: 420px; right: -120px; top: -170px; border: 1px solid rgba(247,213,144,.2); border-radius: 50%; }
+    .use-panel h2 { margin: 0 0 12px; font: 700 clamp(32px, 4vw, 45px) "Gowun Batang", serif; }
+    .use-panel > p { margin: 0; color: rgba(255,249,239,.7); }
+    .use-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,.16); margin-top: 42px; border-block: 1px solid rgba(255,255,255,.16); }
+    .use-item { background: var(--red-dark); padding: 29px 22px; min-height: 145px; }
+    .use-item span { color: #e6bf70; font-size: 24px; }
+    .use-item strong { display: block; margin-top: 15px; font-family: "Gowun Batang", serif; font-size: 18px; }
+    .use-item small { color: rgba(255,249,239,.62); }
+
+    .quote { text-align: center; padding: 120px 20px; background: #efe6d7; }
+    .quote-mark { color: var(--gold); font: 700 56px/1 serif; }
+    blockquote { max-width: 850px; margin: 5px auto 0; font: 700 clamp(27px, 3.5vw, 42px)/1.65 "Gowun Batang", serif; word-break: keep-all; }
+    blockquote em { color: var(--red); font-style: normal; }
+
+    .purchase { padding: 105px 0 130px; }
+    .purchase-card { display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; background: var(--white); box-shadow: var(--shadow); border-radius: 5px 45px 5px 45px; }
+    .purchase-image { min-height: 580px; position: relative; }
+    .purchase-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .purchase-image::after { content: "실제 핸드메이드 작품"; position: absolute; left: 20px; bottom: 20px; padding: 9px 14px; color: #fff; background: rgba(41,34,29,.76); font-size: 12px; letter-spacing: .08em; }
+    .purchase-info { padding: clamp(44px, 6vw, 78px); display: flex; flex-direction: column; justify-content: center; }
+    .purchase-info small { color: var(--red); font-weight: 700; letter-spacing: .15em; }
+    .purchase-info h2 { margin: 12px 0 18px; font: 700 clamp(35px, 4vw, 50px)/1.35 "Gowun Batang", serif; }
+    .purchase-info p { color: var(--muted); margin: 0 0 29px; }
+    .purchase-points { list-style: none; margin: 0 0 34px; padding: 0; display: grid; gap: 12px; }
+    .purchase-points li { display: flex; gap: 12px; align-items: center; font-size: 14px; }
+    .purchase-points li::before { content: "✓"; display: grid; place-items: center; width: 23px; height: 23px; color: #fff; background: var(--gold); border-radius: 50%; font-size: 12px; }
+    .wide { width: 100%; border: 0; min-height: 57px; }
+    .link-note { text-align: center; margin-top: 12px; color: #8b8178; font-size: 12px; }
+
+    footer { color: #c9beb4; background: #29221d; padding: 45px 0 95px; }
+    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 30px; }
+    footer .brand { color: #fff9ef; }
+    footer p { margin: 8px 0 0; font-size: 12px; }
+    .footer-links { display: flex; gap: 20px; font-size: 13px; }
+
+    .mobile-buy { display: none; }
+    .reveal { opacity: 0; transform: translateY(25px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.show { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      .nav-links a:not(.nav-buy) { display: none; }
+      .hero { min-height: auto; padding-top: 55px; }
+      .hero-grid, .story-grid, .purchase-card { grid-template-columns: 1fr; }
+      .hero-grid { gap: 48px; }
+      .hero-visual { min-height: 620px; }
+      .photo-frame { inset: 0 3% 0 6%; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .feature-card { min-height: auto; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 460px 260px; }
+      .gallery-item:first-child { grid-column: 1 / 3; grid-row: auto; }
+      .story-grid { gap: 42px; }
+      .symbol { max-width: 480px; margin: auto; width: 100%; }
+      .use-list { grid-template-columns: repeat(2, 1fr); }
+      .purchase-image { min-height: 550px; }
+    }
+
+    @media (max-width: 600px) {
+      .wrap { width: min(100% - 28px, 1180px); }
+      .notice { font-size: 11px; padding-inline: 10px; }
+      nav { height: 64px; }
+      .nav-buy { padding: 9px 14px; font-size: 12px; }
+      .hero { padding: 42px 0 68px; }
+      h1 { font-size: 40px; }
+      .hero-copy { font-size: 16px; }
+      .hero-actions { align-items: stretch; flex-direction: column; }
+      .btn-secondary { text-align: center; }
+      .trust { gap: 10px; justify-content: space-between; }
+      .trust span { gap: 5px; font-size: 11px; }
+      .hero-visual { min-height: 475px; }
+      .photo-frame { inset: 0 0 0 0; border-radius: 45% 45% 20px 20px; }
+      .seal { width: 86px; height: 86px; right: -5px; top: 30px; font-size: 14px; }
+      .image-note { left: -5px; bottom: 23px; font-size: 14px; }
+      section { padding: 82px 0; }
+      .section-head { margin-bottom: 38px; }
+      .symbol { aspect-ratio: 1/1; }
+      .triangle { font-size: 26px; }
+      .definition { padding: 18px; }
+      .gallery-grid { grid-template-columns: 1fr; grid-template-rows: 410px 275px 245px; }
+      .gallery-item:first-child { grid-column: auto; }
+      .gallery-caption { left: 12px; right: 12px; bottom: 12px; }
+      .use-panel { padding: 48px 24px; border-radius: 4px 34px 4px 34px; }
+      .use-list { grid-template-columns: 1fr 1fr; }
+      .use-item { padding: 23px 12px; min-height: 130px; }
+      .quote { padding: 85px 18px; }
+      .purchase-card { border-radius: 4px 30px 4px 30px; }
+      .purchase-image { min-height: 430px; }
+      .purchase-info { padding: 42px 25px 48px; }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+      .mobile-buy {
+        position: fixed; display: block; z-index: 15; left: 12px; right: 12px; bottom: 12px;
+        padding: 14px 18px; text-align: center; color: #fff; background: var(--red);
+        border-radius: 999px; font-weight: 700; box-shadow: 0 10px 30px rgba(70,15,20,.35);
+      }
+      footer { padding-bottom: 100px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="notice">한 땀 한 땀, 당신의 평안을 기원하며 만듭니다</div>
+  <header>
+    <nav class="wrap" aria-label="주요 메뉴">
+      <a class="brand" href="#top" aria-label="소망수호 홈">
+        <span class="brand-mark">守護</span><span>소망수호</span>
+      </a>
+      <div class="nav-links">
+        <a href="#story">괴불 이야기</a>
+        <a href="#features">특별함</a>
+        <a href="#uses">활용법</a>
+        <a class="nav-buy" href="https://blog.naver.com/pmjoo0601" target="_blank" rel="noopener">구매 · 상담 ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-content reveal">
+          <div class="eyebrow">MODERN HERITAGE · HANDMADE</div>
+          <h1>당신의 특별한<br><em>소망을 담아줄</em><br>괴불 노리개</h1>
+          <p class="hero-copy">선조들이 아이의 평안과 안녕을 바라며 지어주던 작은 수호신. 전통의 의미는 고이 간직하고, 오늘의 일상에 어울리는 감각으로 만들었습니다.</p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="https://blog.naver.com/pmjoo0601" target="_blank" rel="noopener">나의 수호신 만나기 <span>→</span></a>
+            <a class="btn-secondary" href="#story">괴불 이야기 알아보기</a>
+          </div>
+          <div class="trust" aria-label="상품 핵심 특징">
+            <span><i></i>100% 핸드메이드</span>
+            <span><i></i>전통의 의미</span>
+            <span><i></i>다양한 활용</span>
+          </div>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="photo-frame"><img src="assets/hero-products.jpg" alt="여러 색상의 핸드메이드 괴불 노리개 전시 모습" /></div>
+          <div class="seal">한 땀<br>한 땀<br>정성</div>
+          <div class="image-note">소망을 지키는<br>일상 속 작은 수호신</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story" id="story">
+      <div class="wrap story-grid">
+        <div class="symbol reveal" aria-hidden="true"><div class="triangle">安寧</div></div>
+        <div class="story-copy reveal">
+          <div class="eyebrow">A LITTLE GUARDIAN</div>
+          <h2>오래전부터 이어진<br>평안을 바라는 마음</h2>
+          <p>괴불은 어린아이의 주머니 끈 끝에 달아주던 삼각형 모양의 전통 노리개입니다. 사랑하는 이를 나쁜 기운에서 지키고 무탈하기를 바라는 마음이 그 작은 모양 안에 담겨 있습니다.</p>
+          <p>이제 그 따뜻한 마음을 현대적인 색감과 쓰임으로 되살려, 소중한 사람과 나를 위한 특별한 선물로 전합니다.</p>
+          <div class="definition"><b>괴불</b> 어린이들이 주머니 끈 끝에 차는 삼각형 모양의 노리개.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <small>WHY GUEBUL</small>
+          <h2>마음까지 담아 만드는 노리개</h2>
+          <p>단순한 장식을 넘어, 건네는 이의 소망과 받는 이의 평안을 잇는 뜻깊은 수공예품입니다.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card reveal" data-num="01">
+            <div class="feature-icon">✣</div>
+            <h3>100% 핸드메이드 정성</h3>
+            <p>기계로는 담을 수 없는 사람의 온기와 정성을 담았습니다. 한 땀 한 땀, 당신의 평안을 기원하며 정성스레 만듭니다.</p>
+          </article>
+          <article class="feature-card reveal" data-num="02">
+            <div class="feature-icon">守</div>
+            <h3>좋은 뜻을 품은 선물</h3>
+            <p>삼재 액막이, 수능 응원, 새로운 시작처럼 평안과 행운을 바라는 순간에 오래 기억될 특별한 마음을 전해보세요.</p>
+          </article>
+          <article class="feature-card reveal" data-num="03">
+            <div class="feature-icon">∞</div>
+            <h3>일상을 빛내는 활용성</h3>
+            <p>한복은 물론 가방, 자동차 키, 인테리어 소품 등 어디에나 예쁘게 연출하여 일상 속 수호 부적으로 활용할 수 있습니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <small>HANDMADE MOMENTS</small>
+          <h2>전통의 색, 오늘의 쓰임</h2>
+          <p>실제 작품의 다채로운 색감과 손으로 만든 질감, 일상 속에 자연스럽게 어우러진 모습을 확인해 보세요.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-item reveal">
+            <img src="assets/hero-products.jpg" alt="전시된 다양한 색상의 괴불 노리개" loading="lazy" />
+            <figcaption class="gallery-caption"><strong>다채로운 전통의 색</strong><span>각기 다른 색감으로 완성한 핸드메이드 작품</span></figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="assets/handmade-detail.jpg" alt="손에 든 괴불 노리개의 원단과 장식 디테일" loading="lazy" />
+            <figcaption class="gallery-caption"><strong>한 땀 한 땀의 온기</strong><span>손끝에서 완성되는 섬세한 디테일</span></figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="assets/car-use.jpg" alt="자동차 안에 걸어 장식한 괴불 노리개" loading="lazy" />
+            <figcaption class="gallery-caption"><strong>매일 가까이 두는 수호신</strong><span>자동차 장식으로 활용한 모습</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="uses" id="uses">
+      <div class="wrap">
+        <div class="use-panel reveal">
+          <h2>당신의 매일 가까이에</h2>
+          <p>전통을 특별한 날에만 두지 마세요. 오늘의 일상에 자연스럽게 어울립니다.</p>
+          <div class="use-list">
+            <div class="use-item"><span>◈</span><strong>가방 장식</strong><small>매일 함께하는 포인트</small></div>
+            <div class="use-item"><span>◇</span><strong>자동차 · 열쇠</strong><small>안전과 평안을 바라는 마음</small></div>
+            <div class="use-item"><span>✦</span><strong>수능 · 시험 선물</strong><small>진심 어린 응원의 의미</small></div>
+            <div class="use-item"><span>⌂</span><strong>인테리어 소품</strong><small>공간에 더하는 전통의 멋</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote reveal">
+      <div class="quote-mark">“</div>
+      <blockquote>좋은 마음을 담아 건네는 순간,<br>괴불은 단순한 장식이 아닌<br><em>소망의 수호신</em>이 됩니다.</blockquote>
+    </section>
+
+    <section class="purchase" id="purchase">
+      <div class="wrap">
+        <div class="purchase-card reveal">
+          <div class="purchase-image"><img src="assets/handmade-detail.jpg" alt="여러 색상의 핸드메이드 괴불 노리개 실물과 수공예 디테일" loading="lazy" /></div>
+          <div class="purchase-info">
+            <small>HANDMADE GUEBUL NORIGAE</small>
+            <h2>괴불 노리개</h2>
+            <p>당신의 특별한 소망, 그리고 사랑하는 사람의 평안을 위한 하나뿐인 전통 수호 장식입니다. 구성 및 구매 상담은 네이버 블로그에서 안내해 드립니다.</p>
+            <ul class="purchase-points">
+              <li>손끝의 온기를 담은 100% 핸드메이드</li>
+              <li>삼재 액막이 · 합격 기원 · 새출발 선물</li>
+              <li>가방, 키링, 차량, 인테리어 등 다양한 활용</li>
+            </ul>
+            <a class="btn-primary wide" href="https://blog.naver.com/pmjoo0601" target="_blank" rel="noopener">구매 및 상담하러 가기 <span>↗</span></a>
+            <div class="link-note">버튼을 누르면 네이버 블로그로 연결됩니다.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div>
+        <a class="brand" href="#top"><span class="brand-mark">守護</span><span>소망수호</span></a>
+        <p>전통의 마음을 오늘의 일상으로 잇습니다.</p>
+      </div>
+      <div class="footer-links"><a href="#story">괴불 이야기</a><a href="#features">상품 특징</a><a href="https://blog.naver.com/pmjoo0601" target="_blank" rel="noopener">네이버 블로그</a></div>
+    </div>
+  </footer>
+
+  <a class="mobile-buy" href="https://blog.naver.com/pmjoo0601" target="_blank" rel="noopener">괴불 노리개 구매 · 상담하기</a>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = `${Math.min(i % 3, 2) * 90}ms`;
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
